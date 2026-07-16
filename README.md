@@ -1,3 +1,7 @@
+# chinese-characters-jiayan
+
+Professional Python NLP tool for Classical Chinese.
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started

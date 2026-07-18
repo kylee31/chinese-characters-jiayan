@@ -32,6 +32,44 @@ type LexiconResponse = {
 
 const SAMPLE_TEXT = "昔者莊周夢爲胡蝶";
 
+function asStringArray(value: unknown): string[] {
+  return Array.isArray(value)
+    ? value.filter((item): item is string => typeof item === "string")
+    : [];
+}
+
+function normalizeAnalysisResponse(data: unknown): AnalyzeResponse {
+  const value = data && typeof data === "object" ? data : {};
+  const record = value as Record<string, unknown>;
+
+  return {
+    original_text:
+      typeof record.original_text === "string" ? record.original_text : "",
+    tokens: asStringArray(record.tokens),
+    lexicon_tokens: asStringArray(record.lexicon_tokens),
+    pos_tags: Array.isArray(record.pos_tags)
+      ? record.pos_tags.flatMap((item) => {
+          if (!item || typeof item !== "object") {
+            return [];
+          }
+
+          const posTag = item as Record<string, unknown>;
+          return typeof posTag.token === "string" &&
+            typeof posTag.tag === "string"
+            ? [{ token: posTag.token, tag: posTag.tag }]
+            : [];
+        })
+      : [],
+    sentences: asStringArray(record.sentences),
+    punctuated_text:
+      typeof record.punctuated_text === "string" ? record.punctuated_text : "",
+  };
+}
+
+function joinOrFallback(values: string[]): string {
+  return values.length > 0 ? values.join(" | ") : "No data returned";
+}
+
 export function AnalyzerClient() {
   const [text, setText] = useState(SAMPLE_TEXT);
   const [analysisResult, setAnalysisResult] = useState<AnalyzeResponse | null>(
@@ -65,7 +103,7 @@ export function AnalyzerClient() {
         return;
       }
 
-      setAnalysisResult(data);
+      setAnalysisResult(normalizeAnalysisResponse(data));
     } catch {
       setError("Next.js API route is not reachable");
     } finally {
@@ -163,17 +201,21 @@ export function AnalyzerClient() {
           <ResultBlock
             eyebrow="4. 문장 분할"
             title="Sentences"
-            value={analysisResult.sentences.join(" / ")}
+            value={
+              analysisResult.sentences.length > 0
+                ? analysisResult.sentences.join(" / ")
+                : "No data returned"
+            }
           />
           <ResultBlock
             eyebrow="2. 토큰화"
             title="HMM tokens"
-            value={analysisResult.tokens.join(" | ")}
+            value={joinOrFallback(analysisResult.tokens)}
           />
           <ResultBlock
             eyebrow="2. 토큰화"
             title="Lexicon tokens"
-            value={analysisResult.lexicon_tokens.join(" | ")}
+            value={joinOrFallback(analysisResult.lexicon_tokens)}
           />
           <div className="rounded-md border border-zinc-200 bg-white p-5">
             <p className="mb-1 text-xs font-medium text-zinc-500">

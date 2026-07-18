@@ -1,0 +1,12 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: services/api/Dockerfile
+      target: runtime
+    environment:
+      CORS_ORIGINS: '["http://localhost:3000"]'
+      JIAYAN_MODEL_DIR: /models/jiayan
+      PORT: "8000"
+    ports:
+      - "8000:8000"

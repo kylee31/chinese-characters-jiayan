@@ -1,0 +1,10 @@
+**
+!services/
+!services/api/
+!services/api/**
+!third_party/
+!third_party/Jiayan/
+!third_party/Jiayan/**
+!model_data/
+!model_data/jiayan/
+!model_data/jiayan/**

@@ -66,7 +66,7 @@ class JiayanService:
             lexicon_tokens=lexicon_tokens,
             pos_tags=[
                 PosTag(token=token, tag=tag)
-                for token, tag in zip(tokens, raw_pos_tags, strict=False)
+                for token, tag in zip(tokens, raw_pos_tags)
             ],
             sentences=sentences,
             punctuated_text=punctuated_text,
@@ -84,16 +84,6 @@ class JiayanService:
             constructor = PMIEntropyLexiconConstructor()
             raw_lexicon = constructor.construct_lexicon(data_file.name)
 
-        sorted_words = sorted(
-            raw_lexicon,
-            key=lambda word: (
-                len(word),
-                -raw_lexicon[word][0],
-                -raw_lexicon[word][1],
-                -raw_lexicon[word][2],
-                -raw_lexicon[word][3],
-            ),
-        )
         entries = [
             LexiconEntry(
                 word=word,
@@ -102,7 +92,7 @@ class JiayanService:
                 right_entropy=raw_lexicon[word][2],
                 left_entropy=raw_lexicon[word][3],
             )
-            for word in sorted_words[:limit]
+            for word in list(raw_lexicon)[:limit]
         ]
 
         return LexiconResponse(

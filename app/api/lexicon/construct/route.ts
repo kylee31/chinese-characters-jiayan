@@ -1,4 +1,4 @@
-const FASTAPI_BASE_URL = process.env.FASTAPI_BASE_URL ?? "http://localhost:8000";
+import { resolveFastApiBaseUrl } from "../../fastapi.mjs";
 
 type LexiconRequestBody = {
   text?: unknown;
@@ -32,8 +32,9 @@ export async function POST(request: Request) {
   const limit = normalizeLimit(body);
 
   try {
+    const fastApiBaseUrl = resolveFastApiBaseUrl();
     const response = await fetch(
-      `${FASTAPI_BASE_URL}/api/v1/lexicon/construct`,
+      `${fastApiBaseUrl}/api/v1/lexicon/construct`,
       {
         method: "POST",
         headers: {
@@ -46,9 +47,13 @@ export async function POST(request: Request) {
 
     const data: unknown = await response.json();
     return Response.json(data, { status: response.status });
-  } catch {
+  } catch (error) {
     return Response.json(
-      { error: "FastAPI lexicon constructor is not reachable" },
+      {
+        error: "FastAPI lexicon constructor is not reachable",
+        backend_url: resolveFastApiBaseUrl(),
+        detail: error instanceof Error ? error.message : "Unknown error",
+      },
       { status: 502 },
     );
   }

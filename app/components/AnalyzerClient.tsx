@@ -32,6 +32,30 @@ type LexiconResponse = {
 
 const SAMPLE_TEXT = "昔者莊周夢爲胡蝶";
 
+function formatApiError(data: unknown, fallback: string): string {
+  if (!data || typeof data !== "object") {
+    return fallback;
+  }
+
+  const record = data as Record<string, unknown>;
+  const message =
+    typeof record.error === "string"
+      ? record.error
+      : typeof record.detail === "string"
+        ? record.detail
+        : fallback;
+  const backendUrl =
+    typeof record.backend_url === "string" ? record.backend_url : "";
+  const detail =
+    typeof record.detail === "string" && record.detail !== message
+      ? record.detail
+      : "";
+
+  return [message, backendUrl ? `Backend: ${backendUrl}` : "", detail]
+    .filter(Boolean)
+    .join(" / ");
+}
+
 function asStringArray(value: unknown): string[] {
   return Array.isArray(value)
     ? value.filter((item): item is string => typeof item === "string")
@@ -99,7 +123,7 @@ export function AnalyzerClient() {
       const data = await response.json();
 
       if (!response.ok) {
-        setError(data.error ?? data.detail ?? "Analysis failed");
+        setError(formatApiError(data, "Analysis failed"));
         return;
       }
 
@@ -127,7 +151,7 @@ export function AnalyzerClient() {
       const data = await response.json();
 
       if (!response.ok) {
-        setError(data.error ?? data.detail ?? "Lexicon construction failed");
+        setError(formatApiError(data, "Lexicon construction failed"));
         return;
       }
 
@@ -140,7 +164,7 @@ export function AnalyzerClient() {
   }
 
   return (
-    <main className="mx-auto flex min-h-screen w-full max-w-5xl flex-col gap-8 px-6 py-10 sm:px-10">
+    <main className="mx-auto flex min-h-screen w-full max-w-5xl flex-col gap-8 bg-white px-6 py-10 sm:px-10">
       <section className="flex flex-col gap-3">
         <p className="text-sm font-medium text-zinc-500">Jiayan + FastAPI</p>
         <h1 className="text-3xl font-semibold tracking-tight text-zinc-950 sm:text-4xl">

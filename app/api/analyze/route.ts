@@ -1,4 +1,4 @@
-const FASTAPI_BASE_URL = process.env.FASTAPI_BASE_URL ?? "http://localhost:8000";
+import { resolveFastApiBaseUrl } from "../fastapi.mjs";
 
 type AnalyzeRequestBody = {
   text?: unknown;
@@ -23,7 +23,8 @@ export async function POST(request: Request) {
   }
 
   try {
-    const response = await fetch(`${FASTAPI_BASE_URL}/api/v1/analyze`, {
+    const fastApiBaseUrl = resolveFastApiBaseUrl();
+    const response = await fetch(`${fastApiBaseUrl}/api/v1/analyze`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -34,9 +35,13 @@ export async function POST(request: Request) {
 
     const data: unknown = await response.json();
     return Response.json(data, { status: response.status });
-  } catch {
+  } catch (error) {
     return Response.json(
-      { error: "FastAPI analyzer is not reachable" },
+      {
+        error: "FastAPI analyzer is not reachable",
+        backend_url: resolveFastApiBaseUrl(),
+        detail: error instanceof Error ? error.message : "Unknown error",
+      },
       { status: 502 },
     );
   }

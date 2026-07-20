@@ -36,3 +36,26 @@ def test_service_constructs_lexicon_from_text() -> None:
     assert result.total_entries >= len(result.entries)
     assert len(result.entries) <= 5
     assert all(entry.word for entry in result.entries)
+
+
+def test_service_constructs_lexicon_preserves_constructor_order(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    class FakeConstructor:
+        def construct_lexicon(self, data_file: str) -> dict[str, tuple[int, float, float, float]]:
+            return {
+                "天下": (3, 30.0, 1.3, 1.4),
+                "之": (99, 99.0, 9.3, 9.4),
+                "道德": (7, 70.0, 7.3, 7.4),
+            }
+
+    monkeypatch.setattr(
+        "app.services.jiayan_service.PMIEntropyLexiconConstructor",
+        FakeConstructor,
+    )
+
+    service = object.__new__(JiayanService)
+
+    result = service.construct_lexicon("天下之道德", limit=2)
+
+    assert [entry.word for entry in result.entries] == ["天下", "之"]

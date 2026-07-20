@@ -52,3 +52,5 @@ __pycache__/
 
 # superpowers
 /docs/superpowers
+
+.idea

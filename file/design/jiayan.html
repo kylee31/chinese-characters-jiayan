@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics="">
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+  body{margin:0;background:#e9e9ec;font-family:'Pretendard','Pretendard Variable',system-ui,sans-serif}
+</style>
+</helmet>
+<div style="display:flex;gap:48px;align-items:flex-start;padding:48px">
+  <!-- desktop 1920x1080 · 전체 분석 (우측 스크롤) -->
+  <div style="flex:none;width:1920px;height:1080px;background:#fff;box-sizing:border-box;display:flex;flex-direction:column;font-family:'Pretendard',system-ui,sans-serif;color:#18181b;overflow:hidden;box-shadow:0 30px 80px -30px rgba(0,0,0,.25)">
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:0 80px;height:112px;border-bottom:1px solid #ededed">
+      <div style="display:flex;align-items:baseline;gap:16px"><span style="font-weight:700;font-size:26px;letter-spacing:-.3px">Jiayan</span><span style="font-family:'Noto Serif SC',serif;font-size:22px;color:#a1a1aa">字言</span></div>
+      <div style="display:flex;gap:16px;align-items:center;font-size:15px;color:#71717a"></div>
+    </div>
+    <div style="flex:1;display:flex;min-height:0">
+      <!-- 좌 : 입력 (고정) -->
+      <div style="flex:0 0 40%;display:flex;flex-direction:column;padding:52px 64px;border-right:1px solid #ededed">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:32px"><span style="font-size:13px;letter-spacing:3px;text-transform:uppercase;color:#a1a1aa">原文 · 입력</span><span style="font-size:14px;color:#a1a1aa">파일 · 예시</span></div>
+        <div style="flex:1;font-family:'Noto Serif SC',serif;font-size:38px;line-height:2.2;color:#18181b">學而時習之不亦說乎，有朋自遠方來不亦樂乎，人不知而不慍不亦君子乎</div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:36px;border-top:1px solid #ededed;padding-top:28px"><span style="font-size:14px;color:#a1a1aa">28자</span><span style="font-size:17px;font-weight:600;color:#18181b;border-bottom:2px solid #10b981;padding-bottom:3px">전체 분석 →</span></div>
+      </div>
+      <!-- 우 : 5개 결과 세로 스택 (스크롤) -->
+      <div style="flex:1;display:flex;flex-direction:column;min-height:0;background:#fafafa">
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:28px 64px;border-bottom:1px solid #ededed;background:#fff"><span style="font-size:13px;letter-spacing:3px;text-transform:uppercase;color:#18181b;font-weight:600">結果 · 전체 분석</span></div>
+        <div style="flex:1;overflow-y:auto;padding:0 64px">
+          <!-- 1 토큰화 -->
+          <div style="padding:36px 0;border-bottom:1px solid #ededed">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:20px"><span style="font-size:13px;letter-spacing:2px;text-transform:uppercase;color:#0f766e;font-weight:600">01 · 토큰화 <span style="color:#a1a1aa;font-weight:400">8 tokens</span></span><span style="font-size:13px;color:#a1a1aa">복사</span></div>
+            <div style="display:flex;flex-wrap:wrap;gap:0;align-content:flex-start">
+              <span style="font-family:'Noto Serif SC',serif;font-size:28px;padding:11px 18px;background:#fff;border:1px solid #ededed;border-right:none">學</span><span style="font-family:'Noto Serif SC',serif;font-size:28px;padding:11px 18px;background:#fff;border:1px solid #ededed;border-right:none">而</span><span style="font-family:'Noto Serif SC',serif;font-size:28px;padding:11px 18px;background:#fff;border:1px solid #ededed;border-right:none">時習</span><span style="font-family:'Noto Serif SC',serif;font-size:28px;padding:11px 18px;background:#fff;border:1px solid #ededed;border-right:none">之</span><span style="font-family:'Noto Serif SC',serif;font-size:28px;padding:11px 18px;background:#fff;border:1px solid #ededed;border-right:none">不</span><span style="font-family:'Noto Serif SC',serif;font-size:28px;padding:11px 18px;background:#fff;border:1px solid #ededed;border-right:none">亦</span><span style="font-family:'Noto Serif SC',serif;font-size:28px;padding:11px 18px;background:#fff;border:1px solid #ededed;border-right:none">說</span><span style="font-family:'Noto Serif SC',serif;font-size:28px;padding:11px 18px;background:#fff;border:1px solid #ededed">乎</span>
+            </div>
+          </div>
+          <!-- 2 품사 태깅 -->
+          <div style="padding:36px 0;border-bottom:1px solid #ededed">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:20px"><span style="font-size:13px;letter-spacing:2px;text-transform:uppercase;color:#0f766e;font-weight:600">02 · 품사 태깅</span><span style="font-size:13px;color:#a1a1aa">名 動 副 助 …</span></div>
+            <div style="display:flex;flex-wrap:wrap;gap:16px 14px;align-content:flex-start">
+              <span style="display:inline-flex;flex-direction:column;align-items:center;gap:6px"><span style="font-family:'Noto Serif SC',serif;font-size:26px">學</span><span style="font-size:11px;letter-spacing:1px;color:#10b981;border:1px solid #10b981;padding:2px 8px">動詞</span></span>
+              <span style="display:inline-flex;flex-direction:column;align-items:center;gap:6px"><span style="font-family:'Noto Serif SC',serif;font-size:26px">而</span><span style="font-size:11px;letter-spacing:1px;color:#71717a;border:1px solid #ededed;padding:2px 8px">連詞</span></span>
+              <span style="display:inline-flex;flex-direction:column;align-items:center;gap:6px"><span style="font-family:'Noto Serif SC',serif;font-size:26px">時習</span><span style="font-size:11px;letter-spacing:1px;color:#10b981;border:1px solid #10b981;padding:2px 8px">動詞</span></span>
+              <span style="display:inline-flex;flex-direction:column;align-items:center;gap:6px"><span style="font-family:'Noto Serif SC',serif;font-size:26px">之</span><span style="font-size:11px;letter-spacing:1px;color:#71717a;border:1px solid #ededed;padding:2px 8px">助詞</span></span>
+              <span style="display:inline-flex;flex-direction:column;align-items:center;gap:6px"><span style="font-family:'Noto Serif SC',serif;font-size:26px">不</span><span style="font-size:11px;letter-spacing:1px;color:#71717a;border:1px solid #ededed;padding:2px 8px">副詞</span></span>
+              <span style="display:inline-flex;flex-direction:column;align-items:center;gap:6px"><span style="font-family:'Noto Serif SC',serif;font-size:26px">亦</span><span style="font-size:11px;letter-spacing:1px;color:#71717a;border:1px solid #ededed;padding:2px 8px">副詞</span></span>
+              <span style="display:inline-flex;flex-direction:column;align-items:center;gap:6px"><span style="font-family:'Noto Serif SC',serif;font-size:26px">說</span><span style="font-size:11px;letter-spacing:1px;color:#10b981;border:1px solid #10b981;padding:2px 8px">動詞</span></span>
+              <span style="display:inline-flex;flex-direction:column;align-items:center;gap:6px"><span style="font-family:'Noto Serif SC',serif;font-size:26px">乎</span><span style="font-size:11px;letter-spacing:1px;color:#71717a;border:1px solid #ededed;padding:2px 8px">助詞</span></span>
+            </div>
+          </div>
+          <!-- 3 문장 분할 -->
+          <div style="padding:36px 0;border-bottom:1px solid #ededed">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:20px"><span style="font-size:13px;letter-spacing:2px;text-transform:uppercase;color:#0f766e;font-weight:600">03 · 문장 분할 <span style="color:#a1a1aa;font-weight:400">3 문장</span></span></div>
+            <div style="display:flex;flex-direction:column;gap:12px">
+              <div style="display:flex;gap:16px;align-items:baseline"><span style="font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#c4c4cc">1</span><span style="font-family:'Noto Serif SC',serif;font-size:22px;line-height:1.7">學而時習之不亦說乎</span></div>
+              <div style="display:flex;gap:16px;align-items:baseline"><span style="font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#c4c4cc">2</span><span style="font-family:'Noto Serif SC',serif;font-size:22px;line-height:1.7">有朋自遠方來不亦樂乎</span></div>
+              <div style="display:flex;gap:16px;align-items:baseline"><span style="font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#c4c4cc">3</span><span style="font-family:'Noto Serif SC',serif;font-size:22px;line-height:1.7">人不知而不慍不亦君子乎</span></div>
+            </div>
+          </div>
+          <!-- 4 자동 구두점 -->
+          <div style="padding:36px 0;border-bottom:1px solid #ededed">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:20px"><span style="font-size:13px;letter-spacing:2px;text-transform:uppercase;color:#0f766e;font-weight:600">04 · 자동 구두점</span><span style="font-size:13px;color:#a1a1aa">부호 <span style="color:#0f766e">6</span> 삽입</span></div>
+            <div style="font-family:'Noto Serif SC',serif;font-size:24px;line-height:2;color:#18181b">學而時習之<span style="color:#0f766e">，</span>不亦說乎<span style="color:#0f766e">？</span>有朋自遠方來<span style="color:#0f766e">，</span>不亦樂乎<span style="color:#0f766e">？</span>人不知而不慍<span style="color:#0f766e">，</span>不亦君子乎<span style="color:#0f766e">？</span></div>
+          </div>
+          <!-- 5 어휘 구축 -->
+          <div style="padding:36px 0 44px">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px"><span style="font-size:13px;letter-spacing:2px;text-transform:uppercase;color:#0f766e;font-weight:600">05 · 어휘 구축 <span style="color:#a1a1aa;font-weight:400">3 후보</span></span><span style="font-size:13px;font-weight:600;color:#fff;background:#10b981;padding:8px 16px">⤓ CSV</span></div>
+            <div style="border:1px solid #ededed;background:#fff">
+              <div style="display:flex;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#a1a1aa;border-bottom:1px solid #ededed;background:#fafafa"><span style="flex:1.4;padding:11px 18px">단어</span><span style="flex:1;padding:11px 14px;border-left:1px solid #ededed">빈도</span><span style="flex:1;padding:11px 14px;border-left:1px solid #ededed">PMI</span><span style="flex:1;padding:11px 14px;border-left:1px solid #ededed">L_Ent</span><span style="flex:1;padding:11px 14px;border-left:1px solid #ededed">R_Ent</span></div>
+              <div style="display:flex;font-size:15px;border-bottom:1px solid #f4f4f5;align-items:center"><span style="flex:1.4;padding:12px 18px;font-family:'Noto Serif SC',serif;font-size:22px">君子</span><span style="flex:1;padding:12px 14px;border-left:1px solid #f4f4f5">1</span><span style="flex:1;padding:12px 14px;border-left:1px solid #f4f4f5;color:#0f766e">7.11</span><span style="flex:1;padding:12px 14px;border-left:1px solid #f4f4f5">2.41</span><span style="flex:1;padding:12px 14px;border-left:1px solid #f4f4f5">2.62</span></div>
+              <div style="display:flex;font-size:15px;border-bottom:1px solid #f4f4f5;align-items:center"><span style="flex:1.4;padding:12px 18px;font-family:'Noto Serif SC',serif;font-size:22px">時習</span><span style="flex:1;padding:12px 14px;border-left:1px solid #f4f4f5">1</span><span style="flex:1;padding:12px 14px;border-left:1px solid #f4f4f5;color:#0f766e">5.20</span><span style="flex:1;padding:12px 14px;border-left:1px solid #f4f4f5">1.24</span><span style="flex:1;padding:12px 14px;border-left:1px solid #f4f4f5">1.51</span></div>
+              <div style="display:flex;font-size:15px;align-items:center"><span style="flex:1.4;padding:12px 18px;font-family:'Noto Serif SC',serif;font-size:22px">遠方</span><span style="flex:1;padding:12px 14px;border-left:1px solid #f4f4f5">1</span><span style="flex:1;padding:12px 14px;border-left:1px solid #f4f4f5;color:#0f766e">4.90</span><span style="flex:1;padding:12px 14px;border-left:1px solid #f4f4f5">0.88</span><span style="flex:1;padding:12px 14px;border-left:1px solid #f4f4f5">1.12</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- mobile 393x852 · 전체 분석 (본문 스크롤) -->
+  <div style="flex:none;width:393px;height:852px;background:#fff;box-sizing:border-box;display:flex;flex-direction:column;font-family:'Pretendard',system-ui,sans-serif;color:#18181b;overflow:hidden;box-shadow:0 30px 80px -30px rgba(0,0,0,.25)">
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:0 22px;height:66px;border-bottom:1px solid #ededed;flex:none"><span style="font-weight:700;font-size:20px">Jiayan&nbsp;<span style="font-family: &quot;Noto Serif SC&quot;, serif; color: rgb(161, 161, 170); font-size: 16px;">字言</span></span></div>
+    <div style="padding:24px 22px 22px;flex:none;border-bottom:1px solid #ededed">
+      <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#a1a1aa;margin-bottom:12px">原文 · 입력</div>
+      <div style="font-family:'Noto Serif SC',serif;font-size:22px;line-height:1.9;min-height:120px">學而時習之不亦說乎</div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:16px"><span style="font-size:12px;color:#a1a1aa">8자</span><span style="font-size:14px;font-weight:600;border-bottom:2px solid #10b981;padding-bottom:2px">전체 분석 →</span></div>
+    </div>
+    <div style="flex:1;overflow-y:auto;padding:0 22px">
+      <!-- 1 토큰화 -->
+      <div style="padding:20px 0;border-bottom:1px solid #ededed">
+        <div style="font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#0f766e;font-weight:600;margin-bottom:12px">01 · 토큰화 <span style="color:#a1a1aa;font-weight:400">8</span></div>
+        <div style="display:flex;flex-wrap:wrap;gap:0">
+          <span style="font-family:'Noto Serif SC',serif;font-size:20px;padding:7px 12px;border:1px solid #ededed;border-right:none">學</span><span style="font-family:'Noto Serif SC',serif;font-size:20px;padding:7px 12px;border:1px solid #ededed;border-right:none">而</span><span style="font-family:'Noto Serif SC',serif;font-size:20px;padding:7px 12px;border:1px solid #ededed;border-right:none">時習</span><span style="font-family:'Noto Serif SC',serif;font-size:20px;padding:7px 12px;border:1px solid #ededed;border-right:none">之</span><span style="font-family:'Noto Serif SC',serif;font-size:20px;padding:7px 12px;border:1px solid #ededed;border-right:none">不</span><span style="font-family:'Noto Serif SC',serif;font-size:20px;padding:7px 12px;border:1px solid #ededed;border-right:none">亦</span><span style="font-family:'Noto Serif SC',serif;font-size:20px;padding:7px 12px;border:1px solid #ededed;border-right:none">說</span><span style="font-family:'Noto Serif SC',serif;font-size:20px;padding:7px 12px;border:1px solid #ededed">乎</span>
+        </div>
+      </div>
+      <!-- 2 품사 태깅 -->
+      <div style="padding:20px 0;border-bottom:1px solid #ededed">
+        <div style="font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#0f766e;font-weight:600;margin-bottom:12px">02 · 품사 태깅</div>
+        <div style="display:flex;flex-wrap:wrap;gap:12px 10px">
+          <span style="display:inline-flex;flex-direction:column;align-items:center;gap:5px"><span style="font-family:'Noto Serif SC',serif;font-size:22px">學</span><span style="font-size:10px;color:#10b981;border:1px solid #10b981;padding:1px 7px">動詞</span></span>
+          <span style="display:inline-flex;flex-direction:column;align-items:center;gap:5px"><span style="font-family:'Noto Serif SC',serif;font-size:22px">而</span><span style="font-size:10px;color:#71717a;border:1px solid #ededed;padding:1px 7px">連詞</span></span>
+          <span style="display:inline-flex;flex-direction:column;align-items:center;gap:5px"><span style="font-family:'Noto Serif SC',serif;font-size:22px">時習</span><span style="font-size:10px;color:#10b981;border:1px solid #10b981;padding:1px 7px">動詞</span></span>
+          <span style="display:inline-flex;flex-direction:column;align-items:center;gap:5px"><span style="font-family:'Noto Serif SC',serif;font-size:22px">之</span><span style="font-size:10px;color:#71717a;border:1px solid #ededed;padding:1px 7px">助詞</span></span>
+          <span style="display:inline-flex;flex-direction:column;align-items:center;gap:5px"><span style="font-family:'Noto Serif SC',serif;font-size:22px">不</span><span style="font-size:10px;color:#71717a;border:1px solid #ededed;padding:1px 7px">副詞</span></span>
+          <span style="display:inline-flex;flex-direction:column;align-items:center;gap:5px"><span style="font-family:'Noto Serif SC',serif;font-size:22px">說</span><span style="font-size:10px;color:#10b981;border:1px solid #10b981;padding:1px 7px">動詞</span></span>
+        </div>
+      </div>
+      <!-- 3 문장 분할 -->
+      <div style="padding:20px 0;border-bottom:1px solid #ededed">
+        <div style="font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#0f766e;font-weight:600;margin-bottom:12px">03 · 문장 분할 <span style="color:#a1a1aa;font-weight:400">3</span></div>
+        <div style="display:flex;flex-direction:column;gap:9px">
+          <div style="display:flex;gap:12px;align-items:baseline"><span style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#c4c4cc">1</span><span style="font-family:'Noto Serif SC',serif;font-size:18px;line-height:1.6">學而時習之不亦說乎</span></div>
+          <div style="display:flex;gap:12px;align-items:baseline"><span style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#c4c4cc">2</span><span style="font-family:'Noto Serif SC',serif;font-size:18px;line-height:1.6">有朋自遠方來不亦樂乎</span></div>
+          <div style="display:flex;gap:12px;align-items:baseline"><span style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#c4c4cc">3</span><span style="font-family:'Noto Serif SC',serif;font-size:18px;line-height:1.6">人不知而不慍不亦君子乎</span></div>
+        </div>
+      </div>
+      <!-- 4 자동 구두점 -->
+      <div style="padding:20px 0;border-bottom:1px solid #ededed">
+        <div style="font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#0f766e;font-weight:600;margin-bottom:12px">04 · 자동 구두점</div>
+        <div style="font-family:'Noto Serif SC',serif;font-size:19px;line-height:1.9">學而時習之<span style="color:#0f766e">，</span>不亦說乎<span style="color:#0f766e">？</span>有朋自遠方來<span style="color:#0f766e">，</span>不亦樂乎<span style="color:#0f766e">？</span></div>
+      </div>
+      <!-- 5 어휘 구축 -->
+      <div style="padding:20px 0 28px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px"><span style="font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#0f766e;font-weight:600">05 · 어휘 구축</span><span style="font-size:11px;font-weight:600;color:#fff;background:#10b981;padding:6px 11px">⤓ CSV</span></div>
+        <div style="border:1px solid #ededed">
+          <div style="display:flex;font-size:10px;letter-spacing:.5px;text-transform:uppercase;color:#a1a1aa;border-bottom:1px solid #ededed;background:#fafafa"><span style="flex:1.2;padding:8px 10px">단어</span><span style="flex:.8;padding:8px 7px;border-left:1px solid #ededed">빈도</span><span style="flex:.9;padding:8px 7px;border-left:1px solid #ededed">PMI</span><span style="flex:.9;padding:8px 7px;border-left:1px solid #ededed">L_Ent</span><span style="flex:.9;padding:8px 7px;border-left:1px solid #ededed">R_Ent</span></div>
+          <div style="display:flex;font-size:12px;border-bottom:1px solid #f4f4f5;align-items:center"><span style="flex:1.2;padding:9px 10px;font-family:'Noto Serif SC',serif;font-size:17px">君子</span><span style="flex:.8;padding:9px 7px;border-left:1px solid #f4f4f5">1</span><span style="flex:.9;padding:9px 7px;border-left:1px solid #f4f4f5;color:#0f766e">7.11</span><span style="flex:.9;padding:9px 7px;border-left:1px solid #f4f4f5">2.41</span><span style="flex:.9;padding:9px 7px;border-left:1px solid #f4f4f5">2.62</span></div>
+          <div style="display:flex;font-size:12px;align-items:center"><span style="flex:1.2;padding:9px 10px;font-family:'Noto Serif SC',serif;font-size:17px">時習</span><span style="flex:.8;padding:9px 7px;border-left:1px solid #f4f4f5">1</span><span style="flex:.9;padding:9px 7px;border-left:1px solid #f4f4f5;color:#0f766e">5.20</span><span style="flex:.9;padding:9px 7px;border-left:1px solid #f4f4f5">1.24</span><span style="flex:.9;padding:9px 7px;border-left:1px solid #f4f4f5">1.51</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

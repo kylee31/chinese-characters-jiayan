@@ -239,6 +239,13 @@ export const AnalyzerClient = () => {
               字言
             </span>
           </div>
+          <button
+            aria-label="Korean language"
+            className="h-9 min-w-10 border border-[#ededed] bg-white px-3 text-xs font-semibold text-zinc-500 transition hover:border-emerald-500 hover:text-zinc-900 lg:h-10 lg:min-w-12 lg:text-sm"
+            type="button"
+          >
+            한국어 - KO
+          </button>
         </header>
 
         <form

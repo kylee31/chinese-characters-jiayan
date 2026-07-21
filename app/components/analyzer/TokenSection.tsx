@@ -11,7 +11,7 @@ export const TokenSection = ({ tokens, onCopy }: TokenSectionProps) => {
     <section className="border-b border-[#ededed] py-5 lg:py-9">
       <SectionHeader
         label="02 · 토큰화"
-        detail={tokens.length > 0 ? `${tokens.length} tokens` : "대기"}
+        detail={tokens.length > 0 ? `${tokens.length} 토큰` : "대기"}
         action={
           <button
             className="text-xs text-zinc-400 transition hover:text-zinc-900 lg:text-[13px]"

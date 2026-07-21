@@ -11,7 +11,7 @@ export const PosSection = ({ items }: PosSectionProps) => {
     <section className="border-b border-[#ededed] py-5 lg:py-9">
       <SectionHeader
         label="03 · 품사 태깅"
-        detail={items.length > 0 ? "名 動 副 助 ..." : "대기"}
+        detail={items.length > 0 ? "" : "대기"}
       />
       {items.length > 0 ? (
         <div className="flex flex-wrap gap-x-2.5 gap-y-3 lg:gap-x-3.5 lg:gap-y-4">

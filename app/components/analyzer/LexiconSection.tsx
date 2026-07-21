@@ -67,13 +67,13 @@ export const LexiconSection = ({
                     {entry.frequency}
                   </td>
                   <td className="border-l border-[#f4f4f5] px-2 py-2 text-teal-700 lg:px-3.5 lg:py-3">
-                    {entry.pmi.toFixed(2)}
+                    {Math.trunc(entry.pmi)}
                   </td>
                   <td className="border-l border-[#f4f4f5] px-2 py-2 text-zinc-700 lg:px-3.5 lg:py-3">
-                    {entry.left_entropy.toFixed(2)}
+                    {entry.left_entropy}
                   </td>
                   <td className="border-l border-[#f4f4f5] px-2 py-2 text-zinc-700 lg:px-3.5 lg:py-3">
-                    {entry.right_entropy.toFixed(2)}
+                    {entry.right_entropy}
                   </td>
                 </tr>
               ))}

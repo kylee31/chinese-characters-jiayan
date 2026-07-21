@@ -86,9 +86,9 @@ const createCsv = (entries: LexiconEntry[]): string => {
   const rows = entries.map((entry) => [
     entry.word,
     entry.frequency,
-    entry.pmi.toFixed(2),
-    entry.left_entropy.toFixed(2),
-    entry.right_entropy.toFixed(2),
+    Math.trunc(entry.pmi),
+    entry.left_entropy,
+    entry.right_entropy,
   ]);
 
   return [header, ...rows]

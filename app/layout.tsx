@@ -1,5 +1,12 @@
 import type { Metadata } from "next";
+import { Noto_Serif_SC } from "next/font/google";
 import "./globals.css";
+
+const notoSerifSc = Noto_Serif_SC({
+  display: "swap",
+  variable: "--font-noto-serif-sc",
+  weight: ["400", "600"],
+});
 
 export const metadata: Metadata = {
   title: "Jiayan Analyzer",
@@ -12,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full antialiased">
+    <html lang="ko" className={`h-full antialiased ${notoSerifSc.variable}`}>
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );

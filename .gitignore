@@ -49,6 +49,7 @@ __pycache__/
 # model data
 /model_data/*
 !/model_data/.gitkeep
+/jiayan-model.tar.gz
 
 # superpowers
 /docs/superpowers

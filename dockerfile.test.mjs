@@ -9,6 +9,8 @@ for (const dockerfile of dockerfiles) {
     const content = readFileSync(new URL(dockerfile, import.meta.url), "utf8");
 
     assert.doesNotMatch(content, /COPY\s+third_party\/Jiayan\s+\/tmp\/Jiayan/);
+    assert.doesNotMatch(content, /COPY\s+model_data\/jiayan\s+\/models\/jiayan/);
     assert.match(content, /pip install git\+https:\/\/github\.com\/jiaeyan\/Jiayan\.git@/);
+    assert.match(content, /python -m app\.model_bootstrap/);
   });
 }

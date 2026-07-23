@@ -27,7 +27,6 @@ RUN pip install git+https://github.com/jiaeyan/Jiayan.git@28c9638a071f1f0ab69d0e
 
 FROM base AS test
 COPY services/api /app
-COPY model_data/jiayan /models/jiayan
 ENV JIAYAN_MODEL_DIR=/models/jiayan
 CMD ["pytest", "-q"]
 
@@ -35,12 +34,12 @@ FROM base AS runtime
 RUN useradd --create-home --uid 10001 appuser
 
 COPY services/api/app /app/app
-COPY model_data/jiayan /models/jiayan
-RUN chown -R appuser:appuser /app /models
+RUN mkdir -p /models/jiayan \
+    && chown -R appuser:appuser /app /models
 
 USER appuser
 ENV JIAYAN_MODEL_DIR=/models/jiayan \
     PORT=8000
 EXPOSE 8000
 
-CMD ["sh", "-c", "exec uvicorn app.main:app --host 0.0.0.0 --port ${PORT} --workers 1"]
+CMD ["sh", "-c", "python -m app.model_bootstrap && exec uvicorn app.main:app --host 0.0.0.0 --port ${PORT} --workers 1"]

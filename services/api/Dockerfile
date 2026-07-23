@@ -22,8 +22,7 @@ COPY services/api/requirements.txt /tmp/requirements.txt
 RUN pip install --upgrade pip setuptools wheel \
     && pip install -r /tmp/requirements.txt
 
-COPY third_party/Jiayan /tmp/Jiayan
-RUN pip install /tmp/Jiayan \
+RUN pip install git+https://github.com/jiaeyan/Jiayan.git@28c9638a071f1f0ab69d0ee971081147aa682a5b \
     && python -c "from jiayan import WordNgramTokenizer; WordNgramTokenizer()"
 
 FROM base AS test

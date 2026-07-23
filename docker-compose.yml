@@ -5,7 +5,7 @@ services:
       dockerfile: services/api/Dockerfile
       target: runtime
     environment:
-      CORS_ORIGINS: '["http://localhost:3000"]'
+      CORS_ORIGINS: '["http://localhost:3000","https://chinese-characters-jiayan.vercel.app"]'
       JIAYAN_MODEL_DIR: /models/jiayan
       PORT: "8000"
     ports:
